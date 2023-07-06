@@ -1,0 +1,13 @@
+:root {
+  --bg-color: black;
+  --text-color: white;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+body * {
+  font-family: "Poppins", sans-serif;
+  color: var(--text-color);
+}
