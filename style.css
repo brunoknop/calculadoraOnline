@@ -1,15 +1,46 @@
 :root {
   --bg-color: black;
   --text-color: white;
+  --lbl-resultadoVisor: #7d7d7d;
 }
 
 body {
   background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 body * {
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
+}
+
+.visor {
+  display: flex;
+  flex-direction: column;
+}
+
+#resultadoVisor {
+  width: 347px;
+  background-color: var(--bg-color);
+  border: none;
+  text-align: right;
+  font-size: 85px;
+}
+
+#resultadoVisor:focus {
+  outline: none;
+}
+
+#lblresultadoVisor {
+  width: 347px;
+  color: var(--lbl-resultadoVisor);
+  font-size: 14px;
+  text-align: right;
+  font-weight: 300;
 }
 
 .botoes {
@@ -49,4 +80,18 @@ body * {
   border-radius: 38.5px;
   text-align: left;
   width: 167px;
+}
+
+.container footer {
+  text-align: center;
+  margin-top: 50px;
+  color: var(--lbl-resultadoVisor);
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.container footer span {
+  color: var(--lbl-resultadoVisor);
+  font-size: 14px;
+  font-weight: 300;
 }
