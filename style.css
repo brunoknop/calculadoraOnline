@@ -18,13 +18,17 @@ body * {
   color: var(--text-color);
 }
 
+.container {
+  width: 347px;
+  height: 675px;
+}
+
 .visor {
   display: flex;
   flex-direction: column;
 }
 
 #resultadoVisor {
-  width: 347px;
   background-color: var(--bg-color);
   border: none;
   text-align: right;
@@ -36,15 +40,12 @@ body * {
 }
 
 #lblresultadoVisor {
-  width: 347px;
+  margin-right: 10px;
+  height: 15px;
   color: var(--lbl-resultadoVisor);
   font-size: 14px;
   text-align: right;
   font-weight: 300;
-}
-
-.botoes {
-  width: 347px;
 }
 
 .botoes button {
