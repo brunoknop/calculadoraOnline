@@ -32,55 +32,25 @@ resultadoVisor.addEventListener("keypress", function (e) {
   }
 })
 
-//Botões auxiliares e suas funcionalidades
-const limpeza = document.getElementById("limpeza")
-limpeza.addEventListener("click", function () {
-  _conteudoLblVisor = []
-  LimparVisor()
-  limpeza.textContent = "AC"
-})
-
-const maisMenos = document.getElementById("maisMenos")
-const cento = document.getElementById("cento")
-
-//Botões operadores e suas funcionalidades
-let operadores = document.getElementsByClassName("operadores")
-
-for (let n = 0; n < operadores.length; n++) {
-  operadores[n].addEventListener("click", function () {
-    if (this.textContent == "=") ApresentarResultado()
-    else {
-      if (_conteudoLblVisor.length == 3) _conteudoLblVisor = []
-      if (_conteudoLblVisor.length <= 0) {
-        AdicionarValorAoLbl(resultadoVisor.value)
-        AdicionarValorAoLbl(this.textContent)
-        _operadorSelecionado = true
-      } else {
-        _conteudoLblVisor[1] = this.textContent
-        _operadorSelecionado = true
-      }
-      AtualizarLblVisor()
-    }
-  })
+function AdicionarNumeroAoVisor(numero) {
+  if (_operadorSelecionado) {
+    _operadorSelecionado = false
+    resultadoVisor.value = ""
+  }
+  let valorAtual = resultadoVisor.value
+  if (numero == "," && (valorAtual.includes(",") || valorAtual.includes("."))) {
+    return true
+  } else if (numero == "," && valorAtual.length == 0) {
+    return true
+  } else {
+    resultadoVisor.value += numero
+  }
 }
 
-//Botões de números e suas funcionalidades
-let botoes = document.getElementsByClassName("numeros")
-
-for (let n = 0; n < botoes.length; n++) {
-  botoes[n].addEventListener("click", function () {
-    if (_operadorSelecionado) {
-      _operadorSelecionado = false
-      resultadoVisor.value = ""
-    }
-    if (this.textContent == "," && resultadoVisor.value != "") {
-      AdicionaNumeroVisor(this.textContent)
-      limpeza.textContent = "C"
-    } else if (this.textContent != ",") {
-      AdicionaNumeroVisor(this.textContent)
-      limpeza.textContent = "C"
-    }
-  })
+function LimparVisor() {
+  lblresultadoVisor.textContent = ""
+  resultadoVisor.value = ""
+  _conteudoLblVisor = []
 }
 
 function AtualizarLblVisor() {
@@ -90,26 +60,37 @@ function AtualizarLblVisor() {
   }
 }
 
-function LimparVisor() {
-  lblresultadoVisor.textContent = ""
-  resultadoVisor.value = ""
+function ExecutarAcaoDeOperador(operador) {
+  if (resultadoVisor.value != 0) {
+    if (_conteudoLblVisor.length == 2 && operador != "=") {
+      let resultado = EfetuarOperacao(operador)
+      LimparVisor()
+      _conteudoLblVisor.push(resultado)
+      _conteudoLblVisor.push(operador)
+      resultadoVisor.value = resultado
+      _operadorSelecionado = true
+    } else if (_conteudoLblVisor.length == 2 && operador == "=") {
+      let resultado = EfetuarOperacao(_conteudoLblVisor[1])
+      _conteudoLblVisor.push(resultadoVisor.value)
+      resultadoVisor.value = resultado
+      _operadorSelecionado = true
+    } else if (_conteudoLblVisor.length == 3 && operador != "=") {
+      _conteudoLblVisor = []
+      _conteudoLblVisor.push(resultadoVisor.value)
+      _conteudoLblVisor.push(operador)
+      _operadorSelecionado = true
+    } else {
+      _conteudoLblVisor.push(resultadoVisor.value)
+      _conteudoLblVisor.push(operador)
+      _operadorSelecionado = true
+    }
+    AtualizarLblVisor()
+  }
 }
 
-function AdicionaNumeroVisor(numero) {
-  resultadoVisor.value += numero
-}
-
-function AdicionarValorAoLbl(valor) {
-  _conteudoLblVisor.push(valor)
-}
-
-function substituirVirgulaPorPonto(str) {
-  return str.replace(/,/g, ".")
-}
-
-function ApresentarResultado() {
+function EfetuarOperacao(operador) {
   let resultado
-  switch (_conteudoLblVisor[1]) {
+  switch (operador) {
     case "+":
       resultado = Somar()
       break
@@ -126,9 +107,15 @@ function ApresentarResultado() {
       resultado = Multiplicar()
       break
   }
-  lblresultadoVisor.textContent += resultadoVisor.value
-  resultadoVisor.value = resultado
-  _operadorSelecionado = true
+  return substituirPontoPorVirgula(resultado)
+}
+
+function substituirVirgulaPorPonto(str) {
+  return String(str).replace(/,/g, ".")
+}
+
+function substituirPontoPorVirgula(str) {
+  return String(str).replace(".", ",")
 }
 
 function Somar() {
