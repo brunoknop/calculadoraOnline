@@ -6,6 +6,7 @@ let _operadorSelecionado = false
 const lblresultadoVisor = document.getElementById("lblresultadoVisor")
 const resultadoVisor = document.getElementById("resultadoVisor")
 resultadoVisor.addEventListener("keypress", function (e) {
+  /*
   // Permitir apenas números e o ponto/virgula
   var charCode = e.which ?? e.keyCode
   var tecla = String.fromCharCode(charCode)
@@ -30,9 +31,14 @@ resultadoVisor.addEventListener("keypress", function (e) {
   } else {
     return true
   }
+  */
+
+  //não permitir que nenhuma tecla seja pressionada
+  e.preventDefault()
 })
 
 function AdicionarNumeroAoVisor(numero) {
+  if (numero != ",") document.getElementById("limpeza").textContent = "C"
   if (_operadorSelecionado) {
     _operadorSelecionado = false
     resultadoVisor.value = ""
@@ -51,6 +57,7 @@ function LimparVisor() {
   lblresultadoVisor.textContent = ""
   resultadoVisor.value = ""
   _conteudoLblVisor = []
+  document.getElementById("limpeza").textContent = "AC"
 }
 
 function AtualizarLblVisor() {
@@ -63,14 +70,17 @@ function AtualizarLblVisor() {
 function ExecutarAcaoDeOperador(operador) {
   if (resultadoVisor.value != 0) {
     if (_conteudoLblVisor.length == 2 && operador != "=") {
-      let resultado = EfetuarOperacao(operador)
+      let resultado = EfetuarOperacao(operador, resultadoVisor.value)
       LimparVisor()
       _conteudoLblVisor.push(resultado)
       _conteudoLblVisor.push(operador)
       resultadoVisor.value = resultado
       _operadorSelecionado = true
     } else if (_conteudoLblVisor.length == 2 && operador == "=") {
-      let resultado = EfetuarOperacao(_conteudoLblVisor[1])
+      let resultado = EfetuarOperacao(
+        _conteudoLblVisor[1],
+        resultadoVisor.value
+      )
       _conteudoLblVisor.push(resultadoVisor.value)
       resultadoVisor.value = resultado
       _operadorSelecionado = true
@@ -78,6 +88,14 @@ function ExecutarAcaoDeOperador(operador) {
       _conteudoLblVisor = []
       _conteudoLblVisor.push(resultadoVisor.value)
       _conteudoLblVisor.push(operador)
+      _operadorSelecionado = true
+    } else if (_conteudoLblVisor.length == 3 && operador == "=") {
+      _conteudoLblVisor[0] = resultadoVisor.value
+      let resultado = EfetuarOperacao(
+        _conteudoLblVisor[1],
+        _conteudoLblVisor[2]
+      )
+      resultadoVisor.value = resultado
       _operadorSelecionado = true
     } else {
       _conteudoLblVisor.push(resultadoVisor.value)
@@ -88,23 +106,23 @@ function ExecutarAcaoDeOperador(operador) {
   }
 }
 
-function EfetuarOperacao(operador) {
+function EfetuarOperacao(operador, valor) {
   let resultado
   switch (operador) {
     case "+":
-      resultado = Somar()
+      resultado = Somar(valor)
       break
 
     case "-":
-      resultado = Subtrair()
+      resultado = Subtrair(valor)
       break
 
     case "÷":
-      resultado = Dividir()
+      resultado = Dividir(valor)
       break
 
     case "×":
-      resultado = Multiplicar()
+      resultado = Multiplicar(valor)
       break
   }
   return substituirPontoPorVirgula(resultado)
@@ -118,30 +136,30 @@ function substituirPontoPorVirgula(str) {
   return String(str).replace(".", ",")
 }
 
-function Somar() {
+function Somar(valor) {
   return (
     Number(substituirVirgulaPorPonto(_conteudoLblVisor[0])) +
-    Number(substituirVirgulaPorPonto(resultadoVisor.value))
+    Number(substituirVirgulaPorPonto(valor))
   )
 }
 
-function Subtrair() {
+function Subtrair(valor) {
   return (
     Number(substituirVirgulaPorPonto(_conteudoLblVisor[0])) -
-    Number(substituirVirgulaPorPonto(resultadoVisor.value))
+    Number(substituirVirgulaPorPonto(valor))
   )
 }
 
-function Dividir() {
+function Dividir(valor) {
   return (
     Number(substituirVirgulaPorPonto(_conteudoLblVisor[0])) /
-    Number(substituirVirgulaPorPonto(resultadoVisor.value))
+    Number(substituirVirgulaPorPonto(valor))
   )
 }
 
-function Multiplicar() {
+function Multiplicar(valor) {
   return (
     Number(substituirVirgulaPorPonto(_conteudoLblVisor[0])) *
-    Number(substituirVirgulaPorPonto(resultadoVisor.value))
+    Number(substituirVirgulaPorPonto(valor))
   )
 }
