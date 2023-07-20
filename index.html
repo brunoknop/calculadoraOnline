@@ -15,14 +15,18 @@
   <body>
     <div class="container">
       <div class="visor">
-        <label for="resultadoVisor" id="lblresultadoVisor">200-100</label>
-        <input id="resultadoVisor" type="text" value="100" />
+        <label for="resultadoVisor" id="lblresultadoVisor"></label>
+        <input id="resultadoVisor" type="text" />
       </div>
       <div class="botoes">
         <div class="linhaBotoes">
-          <button class="aux" id="limpeza" onclick="LimparVisor()">C</button>
-          <button class="aux" id="maisMenos">±</button>
-          <button class="aux" id="cento">%</button>
+          <button class="aux" id="limpeza" onclick="LimparVisor()">AC</button>
+          <button class="aux" id="maisMenos" onclick="PositivarOuNegativar()">
+            ±
+          </button>
+          <button class="aux" id="cento" onclick="AplicarPorcentagem()">
+            %
+          </button>
           <button
             class="operadores"
             id="divisao"
