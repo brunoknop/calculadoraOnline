@@ -15,12 +15,13 @@ body {
 
 body * {
   font-family: "Poppins", sans-serif;
+  font-size: 16px;
   color: var(--text-color);
 }
 
 .container {
-  width: 347px;
-  height: 650px;
+  width: 21.688rem;
+  height: 40.625rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,7 +31,7 @@ body * {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 618px;
+  height: 38.625rem;
 }
 
 .visor {
@@ -39,33 +40,33 @@ body * {
 }
 
 #visorPrincipal {
-  height: 128px;
+  height: 8rem;
   text-align: right;
-  font-size: 85px;
+  font-size: 5.313rem;
 }
 
 #visorSecundario {
-  height: 20px;
+  height: 1.25rem;
   color: var(--lbl-resultadoVisor);
-  font-size: 14px;
+  font-size: 0.875rem;
   text-align: right;
   font-weight: 300;
 }
 
 .botoes button {
   border: none;
-  width: 77px;
-  height: 77px;
+  width: 4.813rem;
+  height: 4.813rem;
   border-radius: 50%;
   text-align: center;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 300;
 }
 
 .linhaBotoes {
   display: flex;
   justify-content: space-between;
-  margin: 14px 0px;
+  margin: 0.875rem 0rem;
 }
 
 .aux {
@@ -96,16 +97,15 @@ body * {
 }
 
 #num0 {
-  padding-left: 25px;
-  border-radius: 38.5px;
+  padding-left: 1.563rem;
+  border-radius: 2.406rem;
   text-align: left;
-  width: 167px;
+  width: 10.438rem;
 }
 
 .container footer {
   text-align: center;
-  padding-bottom: 0px;
+  padding-bottom: 0rem;
   color: var(--lbl-resultadoVisor);
-  font-size: 14px;
   font-weight: 200;
 }
