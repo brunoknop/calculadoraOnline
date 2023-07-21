@@ -20,7 +20,17 @@ body * {
 
 .container {
   width: 347px;
-  height: 675px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.conteudoCalculadora {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 618px;
 }
 
 .visor {
@@ -28,20 +38,14 @@ body * {
   flex-direction: column;
 }
 
-#resultadoVisor {
-  background-color: var(--bg-color);
-  border: none;
+#visorPrincipal {
+  height: 128px;
   text-align: right;
   font-size: 85px;
 }
 
-#resultadoVisor:focus {
-  outline: none;
-}
-
-#lblresultadoVisor {
-  margin-right: 10px;
-  height: 15px;
+#visorSecundario {
+  height: 20px;
   color: var(--lbl-resultadoVisor);
   font-size: 14px;
   text-align: right;
@@ -100,14 +104,8 @@ body * {
 
 .container footer {
   text-align: center;
-  margin-top: 50px;
+  padding-bottom: 0px;
   color: var(--lbl-resultadoVisor);
   font-size: 14px;
   font-weight: 200;
-}
-
-.container footer span {
-  color: var(--lbl-resultadoVisor);
-  font-size: 14px;
-  font-weight: 300;
 }

@@ -14,102 +14,144 @@
   </head>
   <body>
     <div class="container">
-      <div class="visor">
-        <label for="resultadoVisor" id="lblresultadoVisor"></label>
-        <input id="resultadoVisor" type="text" />
+      <div class="conteudoCalculadora">
+        <div class="visor">
+          <a id="visorSecundario"></a>
+          <a id="visorPrincipal"></a>
+        </div>
+        <div class="botoes">
+          <div class="linhaBotoes">
+            <button class="aux" id="limpeza" onclick="LimparVisores()">AC</button>
+            <button class="aux" id="maisMenos" onclick="PositivarOuNegativar()">
+              ±
+            </button>
+            <button class="aux" id="cento" onclick="AplicarPorcentagem()">
+              %
+            </button>
+            <button
+              class="operadores"
+              id="divisao"
+              onclick="ExecutarAcaoDeOperador('÷')"
+            >
+              ÷
+            </button>
+          </div>
+          <div class="linhaBotoes">
+            <button
+              class="numeros"
+              id="num7"
+              onclick="AdicionarNumeroAoVisor(7)"
+            >
+              7
+            </button>
+            <button
+              class="numeros"
+              id="num8"
+              onclick="AdicionarNumeroAoVisor(8)"
+            >
+              8
+            </button>
+            <button
+              class="numeros"
+              id="num9"
+              onclick="AdicionarNumeroAoVisor(9)"
+            >
+              9
+            </button>
+            <button
+              class="operadores"
+              id="multiplicacao"
+              onclick="ExecutarAcaoDeOperador('×')"
+            >
+              ×
+            </button>
+          </div>
+          <div class="linhaBotoes">
+            <button
+              class="numeros"
+              id="num4"
+              onclick="AdicionarNumeroAoVisor(4)"
+            >
+              4
+            </button>
+            <button
+              class="numeros"
+              id="num5"
+              onclick="AdicionarNumeroAoVisor(5)"
+            >
+              5
+            </button>
+            <button
+              class="numeros"
+              id="num6"
+              onclick="AdicionarNumeroAoVisor(6)"
+            >
+              6
+            </button>
+            <button
+              class="operadores"
+              id="subtracao"
+              onclick="ExecutarAcaoDeOperador('-')"
+            >
+              -
+            </button>
+          </div>
+          <div class="linhaBotoes">
+            <button
+              class="numeros"
+              id="num1"
+              onclick="AdicionarNumeroAoVisor(1)"
+            >
+              1
+            </button>
+            <button
+              class="numeros"
+              id="num2"
+              onclick="AdicionarNumeroAoVisor(2)"
+            >
+              2
+            </button>
+            <button
+              class="numeros"
+              id="num3"
+              onclick="AdicionarNumeroAoVisor(3)"
+            >
+              3
+            </button>
+            <button
+              class="operadores"
+              id="adicao"
+              onclick="ExecutarAcaoDeOperador('+')"
+            >
+              +
+            </button>
+          </div>
+          <div class="linhaBotoes">
+            <button
+              class="numeros"
+              id="num0"
+              onclick="AdicionarNumeroAoVisor(0)"
+            >
+              0
+            </button>
+            <button
+              class="numeros"
+              id="virg"
+              onclick="AdicionarNumeroAoVisor(',')"
+            >
+              ,
+            </button>
+            <button
+              class="operadores"
+              id="resultado"
+              onclick="ExecutarAcaoDeOperador('=')"
+            >
+              =
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="botoes">
-        <div class="linhaBotoes">
-          <button class="aux" id="limpeza" onclick="LimparVisor()">AC</button>
-          <button class="aux" id="maisMenos" onclick="PositivarOuNegativar()">
-            ±
-          </button>
-          <button class="aux" id="cento" onclick="AplicarPorcentagem()">
-            %
-          </button>
-          <button
-            class="operadores"
-            id="divisao"
-            onclick="ExecutarAcaoDeOperador('÷')"
-          >
-            ÷
-          </button>
-        </div>
-        <div class="linhaBotoes">
-          <button class="numeros" id="num7" onclick="AdicionarNumeroAoVisor(7)">
-            7
-          </button>
-          <button class="numeros" id="num8" onclick="AdicionarNumeroAoVisor(8)">
-            8
-          </button>
-          <button class="numeros" id="num9" onclick="AdicionarNumeroAoVisor(9)">
-            9
-          </button>
-          <button
-            class="operadores"
-            id="multiplicacao"
-            onclick="ExecutarAcaoDeOperador('×')"
-          >
-            ×
-          </button>
-        </div>
-        <div class="linhaBotoes">
-          <button class="numeros" id="num4" onclick="AdicionarNumeroAoVisor(4)">
-            4
-          </button>
-          <button class="numeros" id="num5" onclick="AdicionarNumeroAoVisor(5)">
-            5
-          </button>
-          <button class="numeros" id="num6" onclick="AdicionarNumeroAoVisor(6)">
-            6
-          </button>
-          <button
-            class="operadores"
-            id="subtracao"
-            onclick="ExecutarAcaoDeOperador('-')"
-          >
-            -
-          </button>
-        </div>
-        <div class="linhaBotoes">
-          <button class="numeros" id="num1" onclick="AdicionarNumeroAoVisor(1)">
-            1
-          </button>
-          <button class="numeros" id="num2" onclick="AdicionarNumeroAoVisor(2)">
-            2
-          </button>
-          <button class="numeros" id="num3" onclick="AdicionarNumeroAoVisor(3)">
-            3
-          </button>
-          <button
-            class="operadores"
-            id="adicao"
-            onclick="ExecutarAcaoDeOperador('+')"
-          >
-            +
-          </button>
-        </div>
-        <div class="linhaBotoes">
-          <button class="numeros" id="num0" onclick="AdicionarNumeroAoVisor(0)">
-            0
-          </button>
-          <button
-            class="numeros"
-            id="virg"
-            onclick="AdicionarNumeroAoVisor(',')"
-          >
-            ,
-          </button>
-          <button
-            class="operadores"
-            id="resultado"
-            onclick="ExecutarAcaoDeOperador('=')"
-          >
-            =
-          </button>
-        </div>
-      </div>
-      <footer>Feito com ❤ pelo <span>Bruno Knop</span></footer>
+      <footer>Feito com ❤ pelo Bruno Knop</footer>
     </div>
     <script src="./script.js"></script>
   </body>
