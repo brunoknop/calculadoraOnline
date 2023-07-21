@@ -66,6 +66,18 @@ body * {
   font-weight: 300;
 }
 
+/*.botoes #num0 {
+  justify-content: left;
+  padding-left: 1.563rem;
+  border-radius: 2.406rem;
+  text-align: left;
+  width: 10.438rem;
+}*/
+
+.botoes #backspace {
+  background: #333 url(./assets/backspace.svg) no-repeat center;
+}
+
 .linhaBotoes {
   display: flex;
   justify-content: space-between;
@@ -97,13 +109,6 @@ body * {
 
 .operadores:hover {
   background-color: #ffbe5d;
-}
-
-#num0 {
-  padding-left: 1.563rem;
-  border-radius: 2.406rem;
-  text-align: left;
-  width: 10.438rem;
 }
 
 .container footer {

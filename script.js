@@ -1,6 +1,7 @@
 //Variaveis globais para transporte de dados
 let _conteudoVisorSecundario = []
 let _operadorSelecionado = false
+const maxChars = 6
 
 //Visor da calculadora
 const visorSecundario = document.getElementById("visorSecundario")
@@ -215,7 +216,32 @@ function AplicarPorcentagem() {
 }
 
 function PositivarOuNegativar() {
-  if (visorPrincipal.textContent[0] == "-")
-    visorPrincipal.textContent = visorPrincipal.textContent.replace("-", "")
-  else visorPrincipal.textContent = "-" + visorPrincipal.textContent
+  if (
+    visorPrincipal.textContent.length != 0 &&
+    visorPrincipal.textContent != "0"
+  ) {
+    if (visorPrincipal.textContent[0] == "-")
+      visorPrincipal.textContent = visorPrincipal.textContent.replace("-", "")
+    else visorPrincipal.textContent = "-" + visorPrincipal.textContent
+  }
+}
+
+function Backspace() {
+  let index =
+    visorPrincipal.textContent.length - 1 < 0
+      ? 0
+      : visorPrincipal.textContent.length - 1
+
+  if (visorPrincipal.textContent.length == 1) {
+    visorPrincipal.textContent = ""
+    if (_conteudoVisorSecundario.length == 0)
+      document.getElementById("limpeza").textContent = "AC"
+  } else {
+    console.log(index)
+    let visorEmArray = visorPrincipal.textContent.split("")
+    console.log(visorEmArray)
+    visorEmArray = visorEmArray.splice(0, index)
+    console.log(visorEmArray.join(""))
+    visorPrincipal.textContent = visorEmArray.join("")
+  }
 }
