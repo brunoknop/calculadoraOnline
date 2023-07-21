@@ -54,6 +54,9 @@ body * {
 }
 
 .botoes button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   width: 4.813rem;
   height: 4.813rem;
