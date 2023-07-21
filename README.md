@@ -26,8 +26,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ## 💻 Projeto
 
-O projeto em questão é uma calculadora desenvolvida apenas com tecnologias básicas na web. O visual da calculadora é inspirada nas calculadoras do iPhone. </br>
-Esta projeto é um objeto de estudos, então novas atualizações sempre irão surgir com o tempo.
+- O projeto em questão é uma calculadora desenvolvida apenas com tecnologias básicas na web.
+- O visual da calculadora é inspirada na calculadora do iPhone.
+- Este projeto se iniciou como um projeto de estudos e acabou se tornando projeto de passa-tempo deste desenvolvedor que lhes escreve, portanto novas atualizações no projeto sempre irão ocorrer.
+
+- Você pode testar este projeto [Por Aqui](https://brunoknop.github.io/calculadoraOnline/), caso queira
 
 ## :memo: Licença
 
